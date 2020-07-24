@@ -1,0 +1,2 @@
+#define LIT_API __declspec(dllexport)
+#define LIT_API __declspec(dllimport)
