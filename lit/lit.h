@@ -11,15 +11,15 @@
 #endif
 
 // This class is exported from the dll
-class LIT_API Clit {
-public:
-	Clit(void);
-	// TODO: add your methods here.
-};
-
-extern LIT_API int nlit;
-
-LIT_API int fnlit(void);
+//class LIT_API Clit {
+//public:
+//	Clit(void);
+//	// TODO: add your methods here.
+//};
+//
+//extern LIT_API int nlit;
+//
+//LIT_API int fnlit(void);
 //
 //// This is an example of an exported variable
 //LIT_API int nlit=0;

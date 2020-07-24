@@ -14,6 +14,7 @@
 #include <boost/asio.hpp>
 
 #include "lit.h"
+#include "scene.h"
 
 namespace lit
 {
@@ -30,8 +31,7 @@ namespace lit
 			ostream_iterator<string> outIter(os, "\t");
 			copy(device.aliass.begin(), device.aliass.end(), outIter);
 
-			os
-				<< '\n';
+			os << '\n';
 
 			return os;
 		}
@@ -41,7 +41,6 @@ namespace lit
 		vector<string> aliass;
 		chrono::system_clock::time_point lastGoodContact;
 		chrono::system_clock::time_point lastBadContact;
-		// shared_ptr<scene> currScene;
-
+		unique_ptr<scene> scenePtr = make_unique<scene>();
 	};
 }

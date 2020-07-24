@@ -63,7 +63,7 @@ int main(int argc, char** argv)
 	//	<< lit::setbg(lit::RED) << "RED        "<< '\n'
 	//	<< lit::setbg(lit::MAGENTA) << "MAGENTA        "<< '\n'
 	//	<< lit::setbg(lit::BROWN) << "BROWN        "<< '\n'
-	//	<< lit::setbg(lit::LIGHTGRAY) << "LIGHTGRAY        "<< '\n'
+	//	<< lit::setbg(lit::LIGHTGRAY) <<s "LIGHTGRAY        "<< '\n'
 	//	<< lit::setbg(lit::GRAY) << "GRAY        "<< '\n'
 	//	<< lit::setbg(lit::LIGHTBLUE) << "LIGHTBLUE        "<< '\n'
 	//	<< lit::setbg(lit::LIGHTGREEN) << "LIGHTGREEN        "<< '\n'
