@@ -11,12 +11,13 @@ bool lit::Device::isActive() const
 
 void lit::Device::printHeader(ostream& os)
 {
-	os
+	os << lit::saveFlags() << left
 		<< setw(20) << "Alias"
 		<< setw(20) << "Endpoint"
 		<< setw(10) << "State"
 		<< setw(20) << "Last Good Contact"
 		<< setw(20) << "Last Bad Contact"
 		<< setw(20) << "Current Color"
-		<< '\n';
+		<< '\n'
+		<< lit::restoreFlags();
 }

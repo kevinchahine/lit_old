@@ -72,8 +72,8 @@ namespace lit
 		boost::asio::ip::udp::endpoint& endpoint() { return m_endpoint; }
 		const boost::asio::ip::udp::endpoint & endpoint() const { return m_endpoint; }
 
-		string& aliass() { return m_aliass; }
-		const string & aliass() const { return m_aliass; }
+		string& alias() { return m_aliass; }
+		const string & alias() const { return m_aliass; }
 		
 		chrono::system_clock::time_point& lastGoodContact() { return m_lastGoodContact; }
 		const chrono::system_clock::time_point & lastGoodContact() const { return m_lastGoodContact; }
@@ -90,7 +90,7 @@ namespace lit
 	protected: // ------------------------ Protected Fields ----------------------
 
 		boost::asio::ip::udp::endpoint m_endpoint;
-		string m_aliass;
+		string m_aliass = "";
 		chrono::system_clock::time_point m_lastGoodContact;
 		chrono::system_clock::time_point m_lastBadContact;
 		unique_ptr<scene> p_scenePtr = make_unique<scene>();

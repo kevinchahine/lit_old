@@ -9,32 +9,59 @@ using std::string;
 #include <lit/IOColor.h>
 #include <lit/rgb.h>
 #include <lit/Device.h>
+#include <lit/DeviceGroup.h>
 
 #define D(color) lit::setfg(lit::color) << "color" << '\n'
 
 int main(int argc, char** argv)
 {
-	cout << std::left;
-
-	lit::Device device1;
-	lit::Device device2;
-
-	device2.aliass() = "Living Room";
-	device2.currentColor().red = 0;
-	device2.lastBadContact() = std::chrono::system_clock::now();
-	Sleep(1000);
-	device2.lastGoodContact() = std::chrono::system_clock::now();
-
-	lit::Device::printHeader(cout);
-	cout << device1 << '\n'
-		<< device2 << '\n'
-		<< '\n';
-
 	cout << std::right
 		<< lit::setfg(lit::RED) << setfill('=') << setw(12) << '\n'
 		<< lit::setfg(lit::GREEN) << "=== LIT ===\n"
 		<< lit::setfg(lit::BLUE) << setw(12) << '\n' << setfill(' ');
 
+	cout << std::left;
+
+	shared_ptr<lit::Device> device1Ptr = make_shared<lit::Device>();
+	shared_ptr<lit::Device> device2Ptr = make_shared<lit::Device>();
+	shared_ptr<lit::Device> device3Ptr = make_shared<lit::Device>();
+
+	device2Ptr->alias() = "Living Room";
+	device2Ptr->currentColor().red = 0;
+	device2Ptr->lastBadContact() = std::chrono::system_clock::now();
+	Sleep(1000);
+	device2Ptr->lastGoodContact() = std::chrono::system_clock::now();
+	device2Ptr->endpoint() = boost::asio::ip::udp::endpoint(boost::asio::ip::address_v4::from_string("192.168.1.8"), 55'555);
+
+	device3Ptr->alias() = "Party Room";
+	device3Ptr->currentColor().green = 0;
+	device3Ptr->currentColor().red = 255;
+	device3Ptr->currentColor().blue = 255;
+	device3Ptr->endpoint() = boost::asio::ip::udp::endpoint(boost::asio::ip::address_v4::from_string("192.168.1.9"), 55'555);
+
+	lit::DeviceGroup group;
+	group.insert(device1Ptr);
+	group.insert(device2Ptr);
+	group.insert(device3Ptr);
+
+	group.print();
+	cout << "\n";
+
+	group.changeAlias("dev0", "Kitchen");
+	group.changeAlias("dev0", "Bad");
+
+	boost::asio::ip::udp::endpoint newEp(boost::asio::ip::address::from_string("192.168.1.222"), 55'555);
+	group.changeEndpoint(device2Ptr->endpoint(), newEp);
+
+	shared_ptr<lit::Device> kitchenPtr = group.pullByAlias("Kitchen");
+	if (kitchenPtr != nullptr) {
+		kitchenPtr->lastGoodContact() = chrono::system_clock::now();
+		group.insert(kitchenPtr);
+	}
+
+	group.print();
+	cout << '\n';
+	
 	// --- Set Color ---
 	//cout 
 	//	<< lit::setcolor(lit::asdf, lit::BLACK) << "asdf" << '\n'
