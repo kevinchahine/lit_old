@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="lit_driver_main.cpp">
+    <ClCompile Include="LitDriverMain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -30,20 +30,20 @@
     <ClInclude Include="pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="attached_device.h">
+    <ClInclude Include="DeviceGroup.h">
       <Filter>Devices</Filter>
+    </ClInclude>
+    <ClInclude Include="IOColor.h">
+      <Filter>Scenes</Filter>
     </ClInclude>
     <ClInclude Include="rgb.h">
       <Filter>Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="iocolor.h">
+    <ClInclude Include="Scene.h">
       <Filter>Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="scene.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="device_group.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Device.h">
+      <Filter>Devices</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -53,20 +53,20 @@
     <ClCompile Include="pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="attached_device.cpp">
+    <ClCompile Include="DeviceGroup.cpp">
       <Filter>Devices</Filter>
+    </ClCompile>
+    <ClCompile Include="IOColor.cpp">
+      <Filter>Scenes</Filter>
     </ClCompile>
     <ClCompile Include="rgb.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="iocolor.cpp">
+    <ClCompile Include="Scene.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="scene.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="device_group.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Device.cpp">
+      <Filter>Devices</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

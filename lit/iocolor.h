@@ -2,10 +2,13 @@
 
 #include "pch.h"
 #include <iostream>
+#include <stack>
 #include <Windows.h>
 
 namespace lit
 {
+	using namespace std;
+
 	static const uint8_t BLACK = 0;
 	static const uint8_t BLUE = 1;
 	static const uint8_t GREEN = 2;
@@ -41,7 +44,8 @@ namespace lit
 	static WORD currColor = calcColor(WHITE, BLACK);
 	static HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
 	static CONSOLE_SCREEN_BUFFER_INFO csbiInfo;
-
+	static stack<ios_base::fmtflags> flags;
+	
 	class setcolor
 	{
 	public:
@@ -75,5 +79,28 @@ namespace lit
 	{
 	public:
 		setbg(uint8_t bgColor) : setcolor(calcForeground(currColor), bgColor) {}
+	};
+
+	class saveFlags
+	{
+	public:
+
+		friend std::ostream& operator<<(std::ostream& os, const saveFlags& saveFlags)
+		{
+			flags.push(os.flags());
+			return os;
+		}
+	};
+
+	class restoreFlags
+	{
+	public:
+
+		friend std::ostream& operator<<(std::ostream& os, const restoreFlags& restoreFlags)
+		{
+			os.flags(flags.top());
+			flags.pop();
+			return os;
+		}
 	};
 }

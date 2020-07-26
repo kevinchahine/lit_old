@@ -5,7 +5,7 @@
 #include <iostream>
 #include <iomanip>
 
-#include "iocolor.h"
+#include "IOColor.h"
 
 namespace lit
 {
@@ -44,30 +44,38 @@ namespace lit
 
 		friend ostream& operator<<(ostream& os, const rgb& color)
 		{
-			auto flags = cout.flags();
-
 			os
-				<< left
+				<< left << lit::saveFlags()
 				<< setw(4) << lit::setfg(RED) << static_cast<int>(color.red)
 				<< setw(4) << lit::setfg(GREEN) << static_cast<int>(color.green)
 				<< setw(4) << lit::setfg(BLUE) << static_cast<int>(color.blue);
 
-			uint8_t r = ((color.red > 128 ? 1 : 0) << 2);
-			uint8_t g = ((color.green > 128 ? 1 : 0) << 1);
-			uint8_t b = ((color.blue > 128 ? 1 : 0) << 0);
-
-			cout << static_cast<int>(r) << static_cast<int>(g) << static_cast<int>(b);
-			int wordIndex = r | g | b;
-			int colorIndex = wordIndex;
-			if (wordIndex == (lit::BLACK & 0b0000'0111)) colorIndex = lit::WHITE;
+			int colorIndex = color.toConsoleColor();
+			int showingColorIndex = colorIndex;			// set this to white incase the color index is black
+			if (colorIndex == lit::BLACK) showingColorIndex = lit::WHITE;
 
 			os << setw(8) 
-				<< lit::setfg(colorIndex)
-				<< COLOR_NAMES[wordIndex];
-
-			cout.flags(flags);
+				<< lit::setfg(showingColorIndex)
+				<< COLOR_NAMES[colorIndex]
+				<< lit::restoreFlags();
 
 			return os;
+		}
+
+		// Returns the console color index.
+		// Ex:	lit::rgb color;
+		//		int consoleColor = color.toConsoleColor();
+		//		cout << lit::setfg(consoleColor) << "Hehehe";	// Prints foreground in a color matching color;
+		// Warning: If color may be black and may not show up on console
+		int toConsoleColor() const
+		{
+			uint8_t r = ((red > 128 ? 1 : 0) << 2);
+			uint8_t g = ((green > 128 ? 1 : 0) << 1);
+			uint8_t b = ((blue > 128 ? 1 : 0) << 0);
+
+			///cout << static_cast<int>(r) << static_cast<int>(g) << static_cast<int>(b);
+			int wordIndex = r | g | b;
+			return wordIndex;
 		}
 
 		uint8_t red = 255;

@@ -2,15 +2,36 @@
 #include <iomanip>
 #include <string>
 using namespace std;
+using std::cout;
+using std::cin;
+using std::string;
 
-#include <lit/iocolor.h>
+#include <lit/IOColor.h>
 #include <lit/rgb.h>
+#include <lit/Device.h>
 
 #define D(color) lit::setfg(lit::color) << "color" << '\n'
 
 int main(int argc, char** argv)
 {
-	cout << lit::setfg(lit::RED) << setfill('=') << setw(12) << '\n'
+	cout << std::left;
+
+	lit::Device device1;
+	lit::Device device2;
+
+	device2.aliass() = "Living Room";
+	device2.currentColor().red = 0;
+	device2.lastBadContact() = std::chrono::system_clock::now();
+	Sleep(1000);
+	device2.lastGoodContact() = std::chrono::system_clock::now();
+
+	lit::Device::printHeader(cout);
+	cout << device1 << '\n'
+		<< device2 << '\n'
+		<< '\n';
+
+	cout << std::right
+		<< lit::setfg(lit::RED) << setfill('=') << setw(12) << '\n'
 		<< lit::setfg(lit::GREEN) << "=== LIT ===\n"
 		<< lit::setfg(lit::BLUE) << setw(12) << '\n' << setfill(' ');
 
