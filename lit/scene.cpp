@@ -3,7 +3,7 @@
 
 using namespace std;
 
-string lit::scene::serialize() const
+string lit::scene::SceneBase::serialize() const
 {
 	stringstream packet;
 

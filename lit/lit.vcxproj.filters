@@ -19,6 +19,9 @@
     <Filter Include="Scenes">
       <UniqueIdentifier>{8ea6533c-dabb-4514-af35-361858005cab}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Messages">
+      <UniqueIdentifier>{f7024b8c-1a75-4761-be6b-cbd36a60fdf5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />
@@ -45,6 +48,18 @@
     <ClInclude Include="Device.h">
       <Filter>Devices</Filter>
     </ClInclude>
+    <ClInclude Include="hsv.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Rainbow.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Strobe.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MessageBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -67,6 +82,18 @@
     </ClCompile>
     <ClCompile Include="Device.cpp">
       <Filter>Devices</Filter>
+    </ClCompile>
+    <ClCompile Include="hsv.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Rainbow.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Strobe.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MessageBase.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

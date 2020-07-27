@@ -81,8 +81,8 @@ namespace lit
 		chrono::system_clock::time_point& lastBadContact() { return m_lastBadContact; }
 		const chrono::system_clock::time_point & lastBadContact() const { return m_lastBadContact; }
 		
-		unique_ptr<scene> & scenePtr() { return p_scenePtr; }
-		const unique_ptr<scene> & scenePtr() const { return p_scenePtr; }
+		unique_ptr<SceneBase> & scenePtr() { return p_scenePtr; }
+		const unique_ptr<SceneBase> & scenePtr() const { return p_scenePtr; }
 
 		rgb& currentColor() { return m_currentColor; }
 		const rgb& currentColor() const { return m_currentColor; }
@@ -93,7 +93,7 @@ namespace lit
 		string m_aliass = "";
 		chrono::system_clock::time_point m_lastGoodContact;
 		chrono::system_clock::time_point m_lastBadContact;
-		unique_ptr<scene> p_scenePtr = make_unique<scene>();
+		unique_ptr<SceneBase> p_scenePtr = make_unique<SceneBase>();
 		rgb m_currentColor;
 	};
 }

@@ -15,11 +15,16 @@ namespace lit
 {
 	using namespace std;
 
-	class LIT_API scene : public vector<rgb>
+	namespace scene
 	{
-	public:
-		string serialize() const;
+		class LIT_API SceneBase : public vector<rgb>
+		{
+		public: // -------------------- PUBLIC METHODS ------------------------
+			
+			string serialize() const;
 
-		uint16_t waitTime;
+		public:	// -------------------- PUBLIC FIELDS -------------------------
+			uint16_t waitTime;
+		};
 	};
 }
