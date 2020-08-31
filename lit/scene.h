@@ -6,6 +6,7 @@
 #include <sstream>
 #include <algorithm>
 #include <vector>
+#include <chrono>
 
 #include "lit.h"
 
@@ -24,7 +25,7 @@ namespace lit
 			string serialize() const;
 
 		public:	// -------------------- PUBLIC FIELDS -------------------------
-			uint16_t waitTime;
+			chrono::seconds waitTime = chrono::seconds(3);
 		};
 	};
 }

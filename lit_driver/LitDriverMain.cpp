@@ -15,16 +15,16 @@ using std::string;
 
 int main(int argc, char** argv)
 {
-	cout << std::right
+	/*cout << std::right
 		<< lit::setfg(lit::RED) << setfill('=') << setw(12) << '\n'
 		<< lit::setfg(lit::GREEN) << "=== LIT ===\n"
 		<< lit::setfg(lit::BLUE) << setw(12) << '\n' << setfill(' ');
 
 	cout << std::left;
 
-	shared_ptr<lit::Device> device1Ptr = make_shared<lit::Device>();
-	shared_ptr<lit::Device> device2Ptr = make_shared<lit::Device>();
-	shared_ptr<lit::Device> device3Ptr = make_shared<lit::Device>();
+	shared_ptr<lit::devices::Device> device1Ptr = make_shared<lit::devices::Device>();
+	shared_ptr<lit::devices::Device> device2Ptr = make_shared<lit::devices::Device>();
+	shared_ptr<lit::devices::Device> device3Ptr = make_shared<lit::devices::Device>();
 
 	device2Ptr->alias() = "Living Room";
 	device2Ptr->currentColor().red = 0;
@@ -39,7 +39,7 @@ int main(int argc, char** argv)
 	device3Ptr->currentColor().blue = 255;
 	device3Ptr->endpoint() = boost::asio::ip::udp::endpoint(boost::asio::ip::address_v4::from_string("192.168.1.9"), 55'555);
 
-	lit::DeviceGroup group;
+	lit::devices::DeviceGroup group;
 	group.insert(device1Ptr);
 	group.insert(device2Ptr);
 	group.insert(device3Ptr);
@@ -53,7 +53,7 @@ int main(int argc, char** argv)
 	boost::asio::ip::udp::endpoint newEp(boost::asio::ip::address::from_string("192.168.1.222"), 55'555);
 	group.changeEndpoint(device2Ptr->endpoint(), newEp);
 
-	shared_ptr<lit::Device> kitchenPtr = group.pullByAlias("Kitchen");
+	shared_ptr<lit::devices::Device> kitchenPtr = group.pullByAlias("Kitchen");
 	if (kitchenPtr != nullptr) {
 		kitchenPtr->lastGoodContact() = chrono::system_clock::now();
 		group.insert(kitchenPtr);
@@ -61,7 +61,7 @@ int main(int argc, char** argv)
 
 	group.print();
 	cout << '\n';
-	
+	*/
 	// --- Set Color ---
 	//cout 
 	//	<< lit::setcolor(lit::asdf, lit::BLACK) << "asdf" << '\n'

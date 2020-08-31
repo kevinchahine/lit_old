@@ -9,5 +9,5 @@ lit::scene::Rainbow::Rainbow()
 		this->push_back(hsv(hue, 255, 255).toRGB());
 	}
 
-	waitTime = 9000 / 256;
+	waitTime = chrono::seconds(9000 / 256);
 }

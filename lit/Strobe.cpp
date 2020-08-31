@@ -34,5 +34,5 @@ lit::scene::Strobe::Strobe()
 	this->push_back(hsv(224, 255, 255).toRGB());
 	this->push_back(rgb(0, 0, 0));
 
-	waitTime = 500;
+	waitTime = chrono::seconds(500);
 }

@@ -4,7 +4,9 @@
 
 #include <map>
 
+#pragma warning(push, 3)
 #include <boost/optional.hpp>
+#pragma warning(pop)
 
 #include "Device.h"
 
@@ -16,58 +18,72 @@ namespace lit
 	using endpoint_t = boost::asio::ip::udp::endpoint;
 	using ip_address_t = boost::asio::ip::address;
 
-	using alias_map_t = map<alias_t, shared_ptr<Device>>;
-	using endpoint_map_t = map<endpoint_t, shared_ptr<Device>>;
-	using ip_address_map_t = map<ip_address_t, shared_ptr<Device>>;
-
-	class LIT_API DeviceGroup
+	namespace devices
 	{
-	public:
+		using alias_map_t = map<alias_t, shared_ptr<Device>>;
+		using endpoint_map_t = map<endpoint_t, shared_ptr<Device>>;
+		using ip_address_map_t = map<ip_address_t, shared_ptr<Device>>;
 
-		// --- Map Methods ---
+		class LIT_API DeviceGroup
+		{
+		public:
 
-		// returns false if there was already a device with matching parameters
-		bool insert(shared_ptr<Device>& devicePtr);
+			// --- Map Methods ---
 
-		void erase(shared_ptr<Device>& devicePtr);
+			// returns false if there was already a device with matching parameters
+			bool insert(shared_ptr<Device>& devicePtr);
 
-		void erase(const Device& device);
+			void erase(shared_ptr<Device>& devicePtr);
 
-		// --- Accessors ---
+			void erase(const Device& device);
 
-		shared_ptr<Device> pullByAlias(const alias_t& alias);
+			// --- Accessors ---
 
-		shared_ptr<Device> pullByEndpoint(const endpoint_t& ep);
+			// Removes and returns device with matching alias
+			shared_ptr<Device> pullByAlias(const alias_t& alias);
 
-		shared_ptr<Device> pullByIpAddress(const ip_address_t& ip);
+			// Removes and returns device with matching endpoint
+			shared_ptr<Device> pullByEndpoint(const endpoint_t& ep);
 
-		boost::optional<const Device&> getByAlias(const alias_t& alias) const;
+			// Removes and returns device with matching ip address
+			shared_ptr<Device> pullByIpAddress(const ip_address_t& ip);
 
-		boost::optional<const Device&> getByEndpoint(const endpoint_t& ep) const;
+			boost::optional<const Device&> getByAlias(const alias_t& alias) const;
 
-		boost::optional<const Device&> getByIpAddress(const ip_address_t& ip) const;
+			boost::optional<const Device&> getByEndpoint(const endpoint_t& ep) const;
 
-		// --- Modifiers ---
+			boost::optional<const Device&> getByIpAddress(const ip_address_t& ip) const;
 
-		void changeAlias(const alias_t& currAlias, const alias_t& newAlias);
+			//ip_address_map_t::iterator begin();
+			//
+			//const ip_address_map_t::const_iterator begin() const;
+			//
+			//ip_address_map_t::iterator end();
+			//
+			//const ip_address_map_t::const_iterator end() const;
 
-		void changeEndpoint(const endpoint_t& currEp, const endpoint_t& newEp);
+			// --- Modifiers ---
 
-		void changeIpAddress(const ip_address_t& currIp, const ip_address_t& newIp);
+			void changeAlias(const alias_t& currAlias, const alias_t& newAlias);
 
-		// --- Filters ---
+			void changeEndpoint(const endpoint_t& currEp, const endpoint_t& newEp);
 
-		list<shared_ptr<const Device>> getActiveDevices() const;
+			void changeIpAddress(const ip_address_t& currIp, const ip_address_t& newIp);
 
-		list<shared_ptr<const Device>> getInactiveDevices() const;
+			// --- Filters ---
 
-		// --- Output ---
+			list<shared_ptr<const Device>> getActiveDevices() const;
 
-		void print(ostream& os = cout) const;
+			list<shared_ptr<const Device>> getInactiveDevices() const;
 
-	protected:
-		alias_map_t aliasMap;
-		endpoint_map_t endpointMap;
-		ip_address_map_t ipAddressMap;
-	};
+			// --- Output ---
+
+			void print(ostream& os = cout) const;
+
+		protected:
+			alias_map_t aliasMap;
+			endpoint_map_t endpointMap;
+			ip_address_map_t ipAddressMap;
+		};
+	}
 }

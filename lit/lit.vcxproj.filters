@@ -22,6 +22,12 @@
     <Filter Include="Messages">
       <UniqueIdentifier>{f7024b8c-1a75-4761-be6b-cbd36a60fdf5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="CommandLine">
+      <UniqueIdentifier>{b2f14c4f-0f44-40fd-98ab-0848472852a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NetworkInterface">
+      <UniqueIdentifier>{859fb549-2cc8-4245-8437-c298e2acc02c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />
@@ -54,11 +60,29 @@
     <ClInclude Include="Rainbow.h">
       <Filter>Scenes</Filter>
     </ClInclude>
+    <ClInclude Include="CommandLineParser.h">
+      <Filter>CommandLine</Filter>
+    </ClInclude>
+    <ClInclude Include="AttachedDevices.h">
+      <Filter>Devices</Filter>
+    </ClInclude>
+    <ClInclude Include="DiscoveredDevices.h">
+      <Filter>Devices</Filter>
+    </ClInclude>
     <ClInclude Include="Strobe.h">
-      <Filter>Header Files</Filter>
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="NetworkInterface.h">
+      <Filter>NetworkInterface</Filter>
     </ClInclude>
     <ClInclude Include="MessageBase.h">
+      <Filter>NetworkInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="LitServer.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CommandLineHandler.h">
+      <Filter>CommandLine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -89,11 +113,29 @@
     <ClCompile Include="Rainbow.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="CommandLineParser.cpp">
+      <Filter>CommandLine</Filter>
+    </ClCompile>
+    <ClCompile Include="AttachedDevices.cpp">
+      <Filter>Devices</Filter>
+    </ClCompile>
+    <ClCompile Include="DiscoveredDevices.cpp">
+      <Filter>Devices</Filter>
+    </ClCompile>
     <ClCompile Include="Strobe.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Scenes</Filter>
     </ClCompile>
     <ClCompile Include="MessageBase.cpp">
+      <Filter>NetworkInterface</Filter>
+    </ClCompile>
+    <ClCompile Include="NetworkInterface.cpp">
+      <Filter>NetworkInterface</Filter>
+    </ClCompile>
+    <ClCompile Include="LitServer.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CommandLineHandler.cpp">
+      <Filter>CommandLine</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

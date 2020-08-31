@@ -7,7 +7,7 @@ string lit::scene::SceneBase::serialize() const
 {
 	stringstream packet;
 
-	packet << waitTime;
+	packet << waitTime.count();
 
 	for_each(begin(), end(), [&packet](const rgb& color) {
 		packet << color.red << color.green << color.blue;
